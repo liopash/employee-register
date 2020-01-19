@@ -8,6 +8,7 @@ use App\Entity\Employee;
 use DOMDocument;
 use Exception;
 use SimpleXMLElement;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 libxml_use_internal_errors(true);
 
@@ -19,9 +20,10 @@ class StorageXml
     private SimpleXmlElement $xmlObj;
     private string $filename;
 
-    public function __construct()
+    public function __construct(ParameterBagInterface $params)
     {
-        $filename = 'employees.xml';
+       
+        $filename = $params->get('storage_filename');
         $this->filename = $filename;
         if (!file_exists($filename)) {
             $this->xmlObj = new SimpleXMLElement(self::DEFAULT_XML_OBJECT);
