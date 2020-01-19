@@ -71,4 +71,6 @@ Ale aby som pokryl aj túto oblasť tak som pripravil aj dokerizované riešenie
 
 Pridanie nového attribútu napr. `shift preference` by vyžadovalo pridať property, getter a setter do entity/triedy, templatu a parametrov metód v iných triedach ktoré transformujú objekty xml <-> entity.
 viď. pull request https://github.com/liopash/employee-register/compare/feature/shiftPreference?expand=1
+Kedže nemáme spôsob ako spraviť migráciu nad xml súborom musel by sa zeditovať, zmazať alebo by sa pridala validácia xml 
+properties do StorageAdapter::xmlToEntity, ktorá by to handlovala.
 
