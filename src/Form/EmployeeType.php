@@ -20,14 +20,13 @@ class EmployeeType extends AbstractType
             ->add('dob', BirthdayType::class, [
                 'input' => 'string',
                 'widget' => 'choice',
-                'days' => range(1,31),
-                'months' => range(1,12),  
-                'years' => range(1950,2005),
+                'days' => range(1, 31),
+                'months' => range(1, 12),
+                'years' => range(1950, 2005),
                 'html5' => true,
             ])
-            ->add('gender', ChoiceType::class, ['choices'  => ['Male' => 'M', 'Female' => 'F'], 'expanded' => true])
-            ->add('email', EmailType::class)
-        ;
+            ->add('gender', ChoiceType::class, ['choices'  => ['male' => 'M', 'female' => 'F'], 'expanded' => true])
+            ->add('email', EmailType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

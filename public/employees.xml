@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+  <employee uuid="374e364f">
+    <role>admin</role>
+    <firstName>Emanuela</firstName>
+    <lastName>Žákovičová</lastName>
+    <gender>F</gender>
+    <dob>1992-10-19</dob>
+    <email>emazacka@gmail.com</email>
+  </employee>
+  <employee uuid="646c8a6e">
+    <role>admin</role>
+    <firstName>Viktor</firstName>
+    <lastName>Čistý</lastName>
+    <gender>M</gender>
+    <dob>1984-03-04</dob>
+    <email>vikto.cisty@gmail.com</email>
+  </employee>
+  <employee uuid="4f23ab03">
+    <role>developer</role>
+    <firstName>Martin</firstName>
+    <lastName>Kráľ</lastName>
+    <gender>M</gender>
+    <dob>1957-06-17</dob>
+    <email>kralovic@azet.sk</email>
+  </employee>
+  <employee uuid="258f2481">
+    <role>admin</role>
+    <firstName>Kristína</firstName>
+    <lastName>Bulková</lastName>
+    <gender>F</gender>
+    <dob>1978-08-04</dob>
+    <email>bulko.kri@azet.sk</email>
+  </employee>
+  <employee uuid="e7ed9913">
+    <role>user</role>
+    <firstName>Volfgang</firstName>
+    <lastName>Mozart</lastName>
+    <gender>M</gender>
+    <dob>1965-01-01</dob>
+    <email>adia@rocks.sk</email>
+  </employee>
+  <employee uuid="b8748b36">
+    <role>user</role>
+    <firstName>Eva</firstName>
+    <lastName>Mráziková</lastName>
+    <gender>F</gender>
+    <dob>2001-11-13</dob>
+    <email>mrazka.e@gmail.com</email>
+  </employee>
+  <employee uuid="66f30e0b">
+    <role>developer</role>
+    <firstName>Tomáš</firstName>
+    <lastName>Barančík</lastName>
+    <gender>M</gender>
+    <dob>1989-02-04</dob>
+    <email>bartom87@centrum.sk</email>
+  </employee>
+  <employee uuid="a88da0a2">
+    <role>developer</role>
+    <firstName>Antonín</firstName>
+    <lastName>Ábelovič</lastName>
+    <gender>M</gender>
+    <dob>1977-01-20</dob>
+    <email>abelko@azet.sk</email>
+  </employee>
+  <employee uuid="bfa41be7">
+    <role>developer</role>
+    <firstName>Dušan</firstName>
+    <lastName>Králik</lastName>
+    <gender>M</gender>
+    <dob>1988-06-21</dob>
+    <email>rabbit@outlook.com</email>
+  </employee>
+</employees>

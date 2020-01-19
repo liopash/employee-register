@@ -8,9 +8,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Employee
 {
     const FORM_CHOICES = [
-        'Admin' => 'Admin',
-        'User' => 'User',
-        'Developer' => 'Developer'
+        'Office staff' => 'Admin',
+        'Support staff' => 'User',
+        'Developer staff' => 'Developer'
+    ];
+
+
+
+    const GENDER_CHOICES = [
+        'male' => 'M',
+        'female' => 'F',
     ];
 
     /**
@@ -24,11 +31,11 @@ class Employee
      * 
      */
     public ?string $firstName = null;
-    
+
 
     /**
-     *     @Assert\NotBlank,
-     *     @Assert\Length(min=3)
+     * @Assert\NotBlank,
+     * @Assert\Length(min=3)
      * 
      */
     public ?string $lastName = null;
@@ -36,19 +43,19 @@ class Employee
     /**
      * @Assert\Choice({"M", "F"})
      */
-    public $gender;
+    public ?string $gender = null;
 
     /**
      * @Assert\Date
      * @var string A "Y-m-d" formatted value
      */
-    public $dob;
+    public ?string $dob = null;
 
     /**
      * @Assert\Email()
      * @var string
      */
-    public $email;
+    public ?string $email = null;
 
     public function getUuid(): ?string
     {
@@ -98,6 +105,11 @@ class Employee
         return $this;
     }
 
+    public function getShowGender(): ?string
+    {
+        return array_flip(self::GENDER_CHOICES)[$this->getGender()];
+    }
+
     public function getDob(): ?string
     {
         return $this->dob;
@@ -129,14 +141,15 @@ class Employee
         return $from->diff($to)->format("%y");
     }
 
-    public function getShowGender(): ?string
+    public function setEmployee(
+            string $firstName, 
+            string $lastName, 
+            string $gender, 
+            string $dob, 
+            string $email, 
+            string $uuid = null)
     {
-        return $this->getGender() === 'M' ? 'Male' : 'Female';
-    }
 
-    public function setEmployee($firstName, $lastName, $gender, $dob, $email, $uuid = null)
-    {
-        
         $this->setFirstName($firstName);
         $this->setLastName($lastName);
         $this->setGender($gender);
@@ -155,7 +168,6 @@ class Employee
 
     public function getRole()
     {
-        return $this->getClassName();
+        return array_flip(self::FORM_CHOICES)[$this->getClassName()];
     }
-
 }
