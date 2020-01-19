@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee index{% endblock %}
+
+{% block body %}
+    <h1>Employee index</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Uuid</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.uuid }}</td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.getAge }}</td>
+                <td>{{ employee.gender }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.getRole }}</td>
+                <td>
+                    <a href="{{ path('employee_show', {'uuid': employee.uuid}) }}"><i class="far fa-eye text-secondary"></i></a>
+                    <a href="{{ path('employee_edit', {'uuid': employee.uuid}) }}"><i class="far fa-edit text-secondary"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('employee_new') }}" class="btn btn-outline-primary">Create new</a>
+    &nbsp;
+    <span id="graphToggle"><i class="fas fa-chart-bar"></i></span>   
+    <canvas id="myChart" width="400" height="200"></canvas>
+    
+    <script>
+    let chartData = '{{ chartData|json_encode|raw }}';
+    </script>
+{% endblock %}

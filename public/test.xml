@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+    <employee uuid="258f2481">
+        <role>admin</role>
+        <firstName>Kliko</firstName>
+        <lastName>Buko</lastName>
+        <gender>M</gender>
+        <dob>1978-08-04</dob>
+        <email>kk@us.sk</email>
+    </employee>
+    <employee uuid="b4dbc920">
+        <role>developer</role>
+        <firstName>Tomino</firstName>
+        <lastName>Barcacik</lastName>
+        <gender>M</gender>
+        <dob>1978-03-04</dob>
+        <email>tomas@azet.sk</email>
+    </employee>
+    <employee uuid="66f30e0b">
+        <role>admin</role>
+        <firstName>Tomas</firstName>
+        <lastName>Barancika</lastName>
+        <gender>F</gender>
+        <dob>1989-02-04</dob>
+        <email>ssss@ss.sk</email>
+    </employee>
+    <employee uuid="b253d3ff">
+        <role>admin</role>
+        <firstName>Vajci</firstName>
+        <lastName>Majco</lastName>
+        <gender>M</gender>
+        <dob>1965-01-01</dob>
+        <email>vajco@hovno.com</email>
+    </employee>
+    <employee uuid="646c8a6e">
+        <role>admin</role>
+        <firstName>Vik</firstName>
+        <lastName>Čistý</lastName>
+        <gender>M</gender>
+        <dob>1978-03-04</dob>
+        <email>kk@sk.sk</email>
+    </employee>
+    <employee uuid="02957dd5">
+        <role>admin</role>
+        <firstName>Katka</firstName>
+        <lastName>Barčáková</lastName>
+        <gender>F</gender>
+        <dob>1978-09-05</dob>
+        <email>kk@klsmj.sl</email>
+    </employee>
+    
+    <employee uuid="2022a718">
+        <role>developer</role>
+        <firstName>Far</firstName>
+        <lastName>Away</lastName>
+        <gender>M</gender>
+        <dob>1967-04-30</dob>
+        <email>lopkar@smer.sk</email>
+    </employee>
+    <employee uuid="e7ed9913">
+        <role>admin</role>
+        <firstName>Volfgang</firstName>
+        <lastName>Mozart</lastName>
+        <gender>M</gender>
+        <dob>1950-01-01</dob>
+        <email>adia@rocks.sk</email>
+    </employee>
+    <employee uuid="374e364f">
+        <role>admin</role>
+        <firstName>Emanuela</firstName>
+        <lastName>Žákovičová</lastName>
+        <gender>F</gender>
+        <dob>1992-10-19</dob>
+        <email>emazacka@gmail.com</email>
+    </employee>
+    <employee uuid="afd655b8">
+        <role>user</role>
+        <firstName>Wolf</firstName>
+        <lastName>Hungry</lastName>
+        <gender>M</gender>
+        <dob>1978-04-01</dob>
+        <email>wolfik@whatever.sk</email>
+    </employee>
+    <employee uuid="fc3633e6">
+        <role>admin</role>
+        <firstName>Hal</firstName>
+        <lastName>Von Rit</lastName>
+        <gender>M</gender>
+        <dob>1968-08-16</dob>
+        <email>halvonrit@azet.sk</email>
+    </employee>
+    <employee uuid="4f23ab03">
+        <role>user</role>
+        <firstName>Carl</firstName>
+        <lastName>Kral</lastName>
+        <gender>M</gender>
+        <dob>1950-01-01</dob>
+        <email>kralovic@aazet.sk</email>
+    </employee>
+<employee uuid="a88da0a2"><role>admin</role><firstName>Antonín</firstName><lastName>Ábelovec</lastName><gender>M</gender><dob>1989-01-20</dob><email>abelko@azet.sk</email></employee><employee uuid="14955010"><role>developer</role><firstName>Hulko</firstName><lastName>Bambulko</lastName><gender>M</gender><dob>1994-10-18</dob><email>bulko@hambulko.com</email></employee></employees>
