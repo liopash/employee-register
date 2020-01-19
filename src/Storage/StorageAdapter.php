@@ -3,9 +3,6 @@
 namespace App\Storage;
 
 use App\Entity\Employee;
-use App\Entity\Developer;
-use App\Entity\User;
-use App\Entity\Admin;
 use Collator;
 use Exception;
 use SimpleXMLElement;
@@ -22,20 +19,20 @@ class StorageAdapter
         $this->logger = $logger;
     }
 
-    public function findAll()
+    public function findAll(): array
     {
-        $all = $this->storageXml->getXml();
-        $allAsArrayClass = [];
-        foreach ($all as $employee) {
-            $allAsArrayClass[] = $this->xmlToEntity($employee);
+        $employee = $this->storageXml->getXml();
+        $employeesEntityArray = [];
+        foreach ($employee as $employee) {
+            $employeesEntityArray[] = $this->xmlToEntity($employee);
         }
 
-        usort($allAsArrayClass,[$this, 'sort']);
+        usort($employeesEntityArray, [$this, 'sort']);
 
-        return $allAsArrayClass;
+        return $employeesEntityArray;
     }
 
-    public function searchByUuid(string $uuid)
+    public function searchByUuid(string $uuid): Employee
     {
         return $this->xmlToEntity($this->storageXml->searchByUuid($uuid)[0]);
     }
@@ -60,39 +57,43 @@ class StorageAdapter
         return $entity;
     }
 
-    public function storeEntity(Employee $employee) 
+    public function storeEntity(Employee $employee): void
     {
         $this->storageXml->storeEntity($employee);
-        $this->storageXml->save();
+        $this->storageXml->saveToFile();
     }
 
-    public function updateEntity(Employee $employee)
+    public function updateEntity(Employee $employee): void
     {
         $this->storageXml->deleteByUuid($employee->getUuid());
         $this->storageXml->storeEntity($employee);
-        $this->storageXml->save();
+        $this->storageXml->saveToFile();
     }
 
-    public function deleteEntityByUuid(string $uuid)
+    public function deleteEntityByUuid(string $uuid): void
     {
         $this->storageXml->deleteByUuid($uuid);
-        $this->storageXml->save();
+        $this->storageXml->saveToFile();
     }
 
-    public function sort(Employee $a, Employee $b)
+    public function sort(Employee $a, Employee $b): int
     {
         $collator = new Collator("sk_SK");
         return $collator->compare($a->getLastName(), $b->getLastName());
     }
 
+    /**
+     * @return Array[] [["Ábelovič","31"],["Barančík","30"],...]
+     */
     public function getChartData()
     {
-        return array_reduce($this->findAll(),
-            function($carry, $item) {
+        return array_reduce(
+            $this->findAll(),
+            function ($carry, $item) {
                 $carry[] = [$item->getLastName(), $item->getAge()];
                 return $carry;
-            }, 
-            []);
+            },
+            []
+        );
     }
-
 }

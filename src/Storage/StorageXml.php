@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Storage;
 
 use App\Entity\Employee;
+use DOMDocument;
 use Exception;
 use SimpleXMLElement;
 
@@ -11,25 +14,24 @@ libxml_use_internal_errors(true);
 class StorageXml
 {
     const EMPLOYEE = 'employee';
-    const DEFAULT_XML_OBJECT = "<?xml version='1.0' encoding='UTF-8'?><employees></employees>";
+    const DEFAULT_XML_OBJECT = "<?xml version='1.0' encoding='UTF-8'?><employees/>";
 
-    private $xmlObj;
-    private $filename;
+    private SimpleXmlElement $xmlObj;
+    private string $filename;
 
     public function __construct()
     {
-        $filename = 'test.xml';
+        $filename = 'employees.xml';
         $this->filename = $filename;
         if (!file_exists($filename)) {
             $this->xmlObj = new SimpleXMLElement(self::DEFAULT_XML_OBJECT);
-            $this->save($filename);
-    
+            $this->saveToFile();
         } else {
             $this->loadFile();
         }
     }
 
-    public function loadFile()
+    public function loadFile(): void
     {
         libxml_use_internal_errors(true);
         $this->xmlObj = simplexml_load_file($this->filename);
@@ -41,7 +43,7 @@ class StorageXml
             throw new Exception('Unable to load file ' . $error_messages);
         }
     }
-    public function storeEntity(Employee $employee)
+    public function storeEntity(Employee $employee): StorageXml
     {
         $entity = $this->xmlObj->addChild(StorageXml::EMPLOYEE);
         $entity->addAttribute('uuid', $employee->getUuid() ?: $this->generateUuid());
@@ -53,28 +55,36 @@ class StorageXml
         return $this;
     }
 
-    public function save()
+    public function saveToFile(): void
     {
-        $this->xmlObj->asXml($this->filename);
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($this->xmlObj->asXML());
+        $dom->save($this->filename);
     }
 
-    public function getXml()
+    public function getXml(): SimpleXMLElement
     {
         return $this->xmlObj;
     }
 
-    public function generateUuid()
+    public function generateUuid(): string
     {
         return bin2hex(random_bytes(4));
     }
 
+    /**  
+     * @return SimpleXMLElement[] 
+     */
     public function searchByUuid(string $uuid)
     {
         return $this->getXml()->xpath('//employee[@uuid="' . $uuid . '"]');
     }
 
-    public function deleteByUuid(string $uuid)
+    public function deleteByUuid(string $uuid): StorageXml
     {
+        // removing element via self-reference ($x: SimpleXMLElement === $sxe[0]: SimpleXMLElement)
         unset($this->getXml()->xpath('//employee[@uuid="' . $uuid . '"]')[0][0]);
         return $this;
     }
