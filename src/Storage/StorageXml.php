@@ -16,7 +16,8 @@ class StorageXml
     const EMPLOYEE = 'employee';
     const DEFAULT_XML_OBJECT = "<?xml version='1.0' encoding='UTF-8'?><employees/>";
 
-    private SimpleXmlElement $xmlObj;
+    /** @var SimpleXMLElement */
+    private $xmlObj;
     private string $filename;
 
     public function __construct()

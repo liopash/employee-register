@@ -13,11 +13,15 @@ class Employee
         'Developer staff' => 'Developer'
     ];
 
-
-
     const GENDER_CHOICES = [
         'male' => 'M',
         'female' => 'F',
+    ];
+
+    const SHIFT_CHOICES = [
+        'Day' => 'day',
+        'Afternoon' => 'afternoon',
+        'Float' => 'float',
     ];
 
     /**
@@ -57,6 +61,13 @@ class Employee
      */
     public ?string $email = null;
 
+    /**
+     * @Assert\NotBlank,
+     * @Assert\Length(min=3)
+     * 
+     */
+    public ?string $shift = null;
+    
     public function getUuid(): ?string
     {
         return $this->uuid;
@@ -134,6 +145,18 @@ class Employee
         return $this;
     }
 
+    public function getShift(): ?string
+    {
+        return array_flip(self::SHIFT_CHOICES)[$this->shift];
+    }
+
+    public function setShift(string $shift): self
+    {
+        $this->shift = $shift;
+
+        return $this;
+    }
+
     public function getAge(): ?string
     {
         $from = new DateTimeImmutable($this->getDob());
@@ -146,7 +169,8 @@ class Employee
             string $lastName, 
             string $gender, 
             string $dob, 
-            string $email, 
+            string $email,
+            string $shift, 
             string $uuid = null)
     {
 
@@ -156,6 +180,7 @@ class Employee
         $this->setDob($dob);
         $this->setUuid($uuid);
         $this->setEmail($email);
+        $this->setShift($shift);
 
         return $this;
     }

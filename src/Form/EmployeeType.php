@@ -25,8 +25,9 @@ class EmployeeType extends AbstractType
                 'years' => range(1950, 2005),
                 'html5' => true,
             ])
-            ->add('gender', ChoiceType::class, ['choices'  => ['male' => 'M', 'female' => 'F'], 'expanded' => true])
-            ->add('email', EmailType::class);
+            ->add('gender', ChoiceType::class, ['choices' => ['male' => 'M', 'female' => 'F'], 'expanded' => true])
+            ->add('email', EmailType::class)
+            ->add('shift', ChoiceType::class, ['choices' => Employee::SHIFT_CHOICES]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

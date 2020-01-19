@@ -48,6 +48,7 @@ class StorageAdapter
                 $employee->gender,
                 $employee->dob,
                 $employee->email,
+                $employee->shift,
                 $employee->attributes()
             );
         } catch (\Throwable $e) {

@@ -54,7 +54,8 @@ class EmployeeController extends AbstractController
                 $data->getLastName(),
                 $data->getGender(),
                 $data->getDob(),
-                $data->getEmail()
+                $data->getEmail(),
+                $data->getShift(),
             );
             $this->storageAdapter->storeEntity($entity);
 
@@ -101,6 +102,7 @@ class EmployeeController extends AbstractController
                 $data->getGender(),
                 $data->getDob(),
                 $data->getEmail(),
+                $data->getShift(),
                 $uuid,
             );
             $this->storageAdapter->updateEntity($entity);
