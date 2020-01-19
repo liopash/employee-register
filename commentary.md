@@ -20,6 +20,7 @@ alebo cez docker (requirements: docker), build a warmup.sh script spustí compos
   172.17.0.2 <- URL (port 80, docker ip môže byť rôzna)
 ```
 
+###
 Použil som symfony 5 (flex), twig, yarn, encore webpack, bootstrap, chart.js a fontawsome.
 *symfony flex* - ako microframework ponúka všetko čo som k vypracovaniu zadania potreboval,
 správu formulárov, templating, routing (annotations), logging (použil som len pri debugovaní), 
@@ -65,6 +66,9 @@ prišlo pre zadanie zbytočné, graf s vekom riešený toggle ikonou ktorá zap�
 Snažil som sa použiť najnovšie technológie (php 7.4, webpack) ale sass/less som nepoužil lebo som nevidel na to potrebu.
 Webpackom je samozrejme možné importovať aj sass (.enableSassLoader()).
 
-Ako aplikáciu "servovať" nebolo definované v požiadavkach počas práce som používal len symfony serve a yarn dev --watch.
+Ako aplikáciu "servovať" nebolo definované v požiadavkach, počas práce som používal len symfony serve a yarn dev --watch.
 Ale aby som pokryl aj túto oblasť tak som pripravil aj dokerizované riešenie aj keď nie moc sofistikované.
+
+Pridanie nového attribútu napr. `shift preference` by vyžadovalo pridať property, getter a setter do entity/triedy, templatu a parametrov metód v iných triedach ktoré transformujú objekty xml <-> entity.
+viď. pull request https://github.com/liopash/employee-register/compare/feature/shiftPreference?expand=1
 
