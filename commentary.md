@@ -17,7 +17,7 @@ alebo cez docker (requirements: docker), build a warmup.sh script spustí compos
   git clone https://github.com/liopash/employee-register.git
   cd employee-register
   docker-compose up
-  172.17.0.2 <- URL (port 80, docker ip môže byť rôzna)
+  172.17.0.2 <- URL (port 8080, docker ip môže byť rôzna)
 ```
 
 ###
